@@ -4,21 +4,30 @@ import {useDispatch, useSelector} from 'react-redux'
 import {fetchProductById} from '../../store/modules/productsSlice';
 
 const ProductDetailsPage = () => {
-    const dispatch = useDispatch(); // Help you to dispatch actions, Example: dispatch(fetchProduct(id))
-    const {singleProduct} = useSelector(state => state.products); // GETS YOU THE PRODUCTS FROM THE STORE
+    const dispatch = useDispatch();
+    const {singleProduct} = useSelector(state => state.products);
     let {id} = useParams();
 
     useEffect(() => {
-        if (id) { //  id exists before calling fetchProduct is necessary to prevent errors.
+        if (id) {
             dispatch(fetchProductById(id));
         }
     }, [dispatch, id]);
-
     return (
         <>
-             <div>{singleProduct.brand}</div>
+            {singleProduct &&  <span> {singleProduct.brand}
+                <span>
+                    <h3>{singleProduct.brand}</h3>
+                    <img src={singleProduct.thumbnail} className="w-1/2 mx-auto"/>
+                    <button className="border-2 rounded-xl border-green-500 bg-green-600 text-white text-sm w-32 h-8 col mt-3">ADD TO CART</button>
+
+                </span>
+
+            </span>}
+
+
         </>
-    );
+);
 };
 
 export default ProductDetailsPage;
