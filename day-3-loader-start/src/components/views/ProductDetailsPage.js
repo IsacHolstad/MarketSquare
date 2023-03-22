@@ -15,19 +15,20 @@ const ProductDetailsPage = () => {
     }, [dispatch, id]);
     return (
         <>
-            {singleProduct &&  <span> {singleProduct.brand}
-                <span>
-                    <h3>{singleProduct.brand}</h3>
+            {singleProduct && <span> {singleProduct.brand}
+                <span className="text-center mx-auto">
                     <img src={singleProduct.thumbnail} className="w-1/2 mx-auto"/>
-                    <button className="border-2 rounded-xl border-green-500 bg-green-600 text-white text-sm w-32 h-8 col mt-3">ADD TO CART</button>
-
+                    <div>{singleProduct.brand}</div>
+                    <div>{singleProduct.price}NOK</div>
+                    <div>{singleProduct.description}</div>
+                    <button type="button" className="rounded-md bg-indigo-200 mt-4 ml-44 py-2.5 px-3.5 text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100">ADD TO CART</button>
                 </span>
 
             </span>}
 
 
         </>
-);
+    );
 };
 
 export default ProductDetailsPage;
