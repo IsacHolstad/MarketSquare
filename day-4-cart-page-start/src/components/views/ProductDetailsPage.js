@@ -2,6 +2,7 @@ import {useParams} from 'react-router-dom';
 import {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {fetchProductById} from '../../store/modules/productsSlice';
+import {addSingleProductToCart} from "../../store/modules/cartSlice";
 
 const ProductDetailsPage = () => {
     const dispatch = useDispatch(); // Help you to dispatch actions, Example: dispatch(fetchProduct(id))
@@ -75,6 +76,7 @@ const ProductDetailsPage = () => {
                                 <div className="mt-10">
                                     <button type="submit"
                                             className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-blue-600 py-3 px-8 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                                            onClick={() => dispatch(addSingleProductToCart(singleProduct))}
                                     >
                                         Add to cart
                                     </button>
